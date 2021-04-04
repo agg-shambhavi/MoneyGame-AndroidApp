@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Moneygame</string>
+    <string name="LoginScreenEnterEmail">Email</string>
+    <string name="LoginScreenEnterPassword">password</string>
+    <string name="LoginScreenHeading">Login</string>
+    <string name="loginScreenButton">Login</string>
+</resources>
