@@ -3,6 +3,8 @@ package com.example.moneygame;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
@@ -56,11 +58,18 @@ public class LoginActivity extends AppCompatActivity {
                 final JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                         Request.Method.POST, url, loginJSON,
                         new Response.Listener<JSONObject>() {
+                            private static final String TOKEN_ID = "token_pref";
+
                             @Override
                             public void onResponse(JSONObject response) {
                                 try {
                                     @NonNull final String token = response.getString("jwtToken");
-                                    Toast.makeText(LoginActivity.this, "token: " + token, Toast.LENGTH_LONG).show();
+                                    SharedPreferences sharedPreferences = getSharedPreferences(TOKEN_ID, MODE_PRIVATE);
+                                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                                    editor.putString("jet_token", token);
+                                    editor.apply();
+                                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                    startActivity(intent);
                                 } catch (JSONException e) {
                                     e.printStackTrace();
 
@@ -71,7 +80,7 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         error.printStackTrace();
-                        Toast.makeText(LoginActivity.this, "Error from on error response", Toast.LENGTH_LONG).show();
+                        Toast.makeText(LoginActivity.this, error.toString(), Toast.LENGTH_LONG).show();
                     }
                 }
                 );
