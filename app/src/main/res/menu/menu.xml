@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/portfolio"
+        android:icon="@drawable/ic_portfolio"
+        android:title="@string/menu_portfolio" />
+
+    <item
+        android:id="@+id/all_transactions"
+        android:icon="@drawable/ic_all_transactions"
+        android:title="@string/menu_all_transactions" />
+
+    <item
+        android:id="@+id/buy"
+        android:icon="@drawable/ic_buy"
+        android:title="@string/menu_buy" />
+
+    <item
+        android:id="@+id/sell"
+        android:icon="@drawable/ic_sell"
+        android:title="@string/menu_sell" />
+
+    <item
+        android:id="@+id/user_info"
+        android:icon="@drawable/ic_user_info"
+        android:title="@string/menu_user_info" />
+</menu>

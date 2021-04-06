@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/menu_buy"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/darkBlue"
+        android:layout_marginLeft="16dp"
+        android:id="@+id/transaction_fragment_heading" />
+
+    <View
+        android:layout_width="30dp"
+        android:layout_height="5dp"
+        android:layout_below="@+id/transaction_fragment_heading"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginLeft="16dp"
+        android:id="@+id/loginScreenLine"
+        android:background="@color/darkBlue" />
+
+</RelativeLayout>

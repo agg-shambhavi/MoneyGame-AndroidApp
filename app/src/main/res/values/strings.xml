@@ -1,7 +1,12 @@
 <resources>
     <string name="app_name">Moneygame</string>
     <string name="LoginScreenEnterEmail">Email</string>
-    <string name="LoginScreenEnterPassword">password</string>
+    <string name="LoginScreenEnterPassword">Password</string>
     <string name="LoginScreenHeading">Login</string>
     <string name="loginScreenButton">Login</string>
+    <string name="menu_portfolio">Portfolio</string>
+    <string name="menu_all_transactions">Transactions</string>
+    <string name="menu_buy">Buy</string>
+    <string name="menu_sell">Sell</string>
+    <string name="menu_user_info">My Info</string>
 </resources>
