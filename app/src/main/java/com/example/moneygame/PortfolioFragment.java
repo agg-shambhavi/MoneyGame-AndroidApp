@@ -31,7 +31,6 @@ public class PortfolioFragment extends Fragment {
             @Override
             public void onResponse(List<PortfolioModel> portfolioModelList) {
                 Toast.makeText(getActivity(), portfolioModelList.toString(), Toast.LENGTH_LONG).show();
-                Log.d(TAG, portfolioModelList.toString());
             }
         });
 

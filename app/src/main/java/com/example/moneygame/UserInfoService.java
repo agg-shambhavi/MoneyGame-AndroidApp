@@ -27,7 +27,6 @@ import static android.content.Context.MODE_PRIVATE;
 public class UserInfoService {
 
     public static final String BASE_URL = "http://192.168.29.235:5000";
-    public static final String URL_TRANSACTIONS = BASE_URL + "/transaction/all";
     public static final String URL_USERINFO = BASE_URL + "/dashboard/userinfo";
     Context context;
 
