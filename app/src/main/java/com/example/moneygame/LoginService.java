@@ -3,6 +3,7 @@ package com.example.moneygame;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -21,7 +22,6 @@ public class LoginService {
 
     public static final String URL_AUTH_LOGIN = "http://192.168.29.235:5000/auth/login";
     Context context;
-    boolean loginSuccess;
 
     public interface VolleyResponseListener {
         void onError(String message);
@@ -34,8 +34,6 @@ public class LoginService {
     }
 
     public void login(String email, String password, VolleyResponseListener volleyResponseListener) {
-        String url = URL_AUTH_LOGIN;
-
 
         final JSONObject loginJSON = new JSONObject();
 
@@ -47,7 +45,7 @@ public class LoginService {
         }
 
         final JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
-                Request.Method.POST, url, loginJSON,
+                Request.Method.POST, URL_AUTH_LOGIN, loginJSON,
                 new Response.Listener<JSONObject>() {
                     private static final String TOKEN_ID = "token_pref";
 
@@ -55,10 +53,12 @@ public class LoginService {
                     public void onResponse(JSONObject response) {
                         try {
                             @NonNull final String token = response.getString("jwtToken");
-                            SharedPreferences sharedPreferences = context.getSharedPreferences(TOKEN_ID, MODE_PRIVATE);
-                            SharedPreferences.Editor editor = sharedPreferences.edit();
-                            editor.putString("jwt_token", token);
-                            editor.apply();
+                            JWTSharedPref.setDefaults("jwt_token", token, context);
+//                            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(LoginService.context);
+//                                    context.getSharedPreferences(TOKEN_ID, MODE_PRIVATE);
+//                            SharedPreferences.Editor editor = sharedPreferences.edit();
+//                            editor.putString("jwt_token", token);
+//                            editor.apply();
 
                             volleyResponseListener.onResponse(true);
 //
