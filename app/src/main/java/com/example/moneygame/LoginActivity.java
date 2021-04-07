@@ -42,50 +42,20 @@ public class LoginActivity extends AppCompatActivity {
                 String email = emailField.getText().toString();
                 String password = passwordField.getText().toString();
 
-//                Toast.makeText(LoginActivity.this, "Email: " + email + " Password: " + password, Toast.LENGTH_LONG).show();
-                RequestQueue queue = Volley.newRequestQueue(LoginActivity.this);
-                String url = "http://192.168.29.235:5000/auth/login";
-
-                final JSONObject loginJSON = new JSONObject();
-
-                try {
-                    loginJSON.put("email", email);
-                    loginJSON.put("password", password);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-                final JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
-                        Request.Method.POST, url, loginJSON,
-                        new Response.Listener<JSONObject>() {
-                            private static final String TOKEN_ID = "token_pref";
-
-                            @Override
-                            public void onResponse(JSONObject response) {
-                                try {
-                                    @NonNull final String token = response.getString("jwtToken");
-                                    SharedPreferences sharedPreferences = getSharedPreferences(TOKEN_ID, MODE_PRIVATE);
-                                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                                    editor.putString("jet_token", token);
-                                    editor.apply();
-                                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                                    startActivity(intent);
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
-
-                                    Toast.makeText(LoginActivity.this, "Error inside on response try catch", Toast.LENGTH_LONG).show();
-                                }
-                            }
-                        }, new Response.ErrorListener() {
+//                Toast.makeText(LoginActivity.this, "Email: " + email + " Password: " + password, Toast.LENGTH_LONG).show()
+                LoginService loginService = new LoginService(LoginActivity.this);
+                loginService.login(email, password, new LoginService.VolleyResponseListener() {
                     @Override
-                    public void onErrorResponse(VolleyError error) {
-                        error.printStackTrace();
-                        Toast.makeText(LoginActivity.this, error.toString(), Toast.LENGTH_LONG).show();
+                    public void onError(String message) {
+                        Toast.makeText(LoginActivity.this, "Incorrect e-mail or password " + password, Toast.LENGTH_LONG).show();
                     }
-                }
-                );
 
-                Volley.newRequestQueue(LoginActivity.this).add(jsonObjectRequest);
+                    @Override
+                    public void onResponse(boolean loginSuccess) {
+                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                        startActivity(intent);
+                    }
+                });
 
 
             }
