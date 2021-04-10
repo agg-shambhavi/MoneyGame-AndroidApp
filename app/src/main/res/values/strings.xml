@@ -9,4 +9,8 @@
     <string name="menu_buy">Buy</string>
     <string name="menu_sell">Sell</string>
     <string name="menu_user_info">My Info</string>
+    <string name="tv_first_name_userFragment">First Name:</string>
+    <string name="tv_last_name_user_fragment">Last Name:</string>
+    <string name="tv_user_userFragment">User Email:</string>
+    <string name="tv_reg_date_user_fragment">Registration Date:</string>
 </resources>
