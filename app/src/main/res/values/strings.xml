@@ -13,4 +13,7 @@
     <string name="tv_last_name_user_fragment">Last Name:</string>
     <string name="tv_user_userFragment">User Email:</string>
     <string name="tv_reg_date_user_fragment">Registration Date:</string>
+    <string name="stock_symbol_portfolio">Stock Symbol</string>
+    <string name="quantity_portfolio">Quantity</string>
+    <string name="current_price_portfolio">Current Price</string>
 </resources>
