@@ -16,4 +16,9 @@
     <string name="stock_symbol_portfolio">Stock Symbol</string>
     <string name="quantity_portfolio">Quantity</string>
     <string name="current_price_portfolio">Current Price</string>
+    <string name="stock_symbol_transaction">Stock Symbol</string>
+    <string name="transaction_type_transaction">Transaction Type</string>
+    <string name="quantity_transaction">Quantity</string>
+    <string name="transaction_price_transaction">Transaction Price</string>
+    <string name="transaction_date_transaction">Transaction Date</string>
 </resources>
