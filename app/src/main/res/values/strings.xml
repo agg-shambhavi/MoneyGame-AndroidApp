@@ -21,4 +21,7 @@
     <string name="quantity_transaction">Quantity</string>
     <string name="transaction_price_transaction">Transaction Price</string>
     <string name="transaction_date_transaction">Transaction Date</string>
+    <string name="buy_stock_symbol">Enter Stock Symbol</string>
+    <string name="buy_enter_quantity">Enter Quantity</string>
+    <string name="buy_buy_btn">Buy</string>
 </resources>

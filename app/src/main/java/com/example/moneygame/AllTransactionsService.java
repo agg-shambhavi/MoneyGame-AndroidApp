@@ -68,7 +68,6 @@ public class AllTransactionsService {
                                 allTransactionsModel.setTransaction_type(stock.getString("transaction_type"));
                                 allTransactionsModel.setQuantity(Integer.parseInt(stock.getString("abs")));
                                 allTransactionsModel.setEod_price(Double.parseDouble(stock.getString("eod_price")));
-                                Log.d(TAG, allTransactionsModel.toString() + "heloooooooooooo");
                                 allTransactionsModelList.add(allTransactionsModel);
                             } catch (JSONException e) {
                                 e.printStackTrace();

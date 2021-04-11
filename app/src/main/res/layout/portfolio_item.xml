@@ -18,7 +18,6 @@
             android:layout_weight="1"
             android:padding="3dp"
             android:textSize="15sp"
-
             />
 
         <TextView
