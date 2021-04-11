@@ -77,10 +77,6 @@ public class PortfolioService {
                         }
 
                         volleyResponseListener.onResponse(portfolioModelList);
-
-
-//                        volleyResponseListener.onResponse(response.length());
-
                     }
                 }, new Response.ErrorListener() {
             @Override

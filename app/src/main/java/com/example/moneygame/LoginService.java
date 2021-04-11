@@ -54,17 +54,10 @@ public class LoginService {
                         try {
                             @NonNull final String token = response.getString("jwtToken");
                             JWTSharedPref.setDefaults("jwt_token", token, context);
-//                            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(LoginService.context);
-//                                    context.getSharedPreferences(TOKEN_ID, MODE_PRIVATE);
-//                            SharedPreferences.Editor editor = sharedPreferences.edit();
-//                            editor.putString("jwt_token", token);
-//                            editor.apply();
-
                             volleyResponseListener.onResponse(true);
 //
                         } catch (JSONException e) {
                             e.printStackTrace();
-
                             Toast.makeText(context, "Error inside on response try catch", Toast.LENGTH_LONG).show();
                         }
                     }
@@ -76,9 +69,6 @@ public class LoginService {
             }
         }
         );
-
         MySingleton.getInstance(context).addToRequestQueue(jsonObjectRequest);
-
-
     }
 }

@@ -15,6 +15,25 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+
+import com.android.volley.AuthFailureError;
+import com.android.volley.NetworkResponse;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.VolleyLog;
+import com.android.volley.toolbox.HttpHeaderParser;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.UnsupportedEncodingException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 
 import static android.content.ContentValues.TAG;
 
@@ -23,8 +42,14 @@ public class BuyFragment extends Fragment {
 
     View view;
     AutoCompleteTextView stock_symbol_dropdown;
-    EditText quantity;
+    EditText quantity_et;
     Button buy;
+    public static final String URL_BUY = "http://192.168.29.235:5000/transaction/buy";
+
+    public String getToken() {
+        String jwttoken = JWTSharedPref.getDefaults("jwt_token", getActivity());
+        return jwttoken;
+    }
 
     @Nullable
     @Override
@@ -36,15 +61,108 @@ public class BuyFragment extends Fragment {
                 android.R.layout.simple_list_item_1, STOCKS);
         stock_symbol_dropdown.setAdapter(stocksAdapter);
 
-        String stock_symbol = stock_symbol_dropdown.getText().toString();
 
-        quantity = (EditText) view.findViewById(R.id.buy_qty);
+        quantity_et = (EditText) view.findViewById(R.id.buy_qty);
         buy = (Button) view.findViewById(R.id.buyBtn);
 
         buy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
+                String stock_symbol = stock_symbol_dropdown.getText().toString();
+                int quantity = Integer.parseInt(quantity_et.getText().toString());
+
+                Toast.makeText(getContext(), stock_symbol.toString(), Toast.LENGTH_SHORT).show();
+
+                final JSONObject buyJson = new JSONObject();
+                final String mRequestBody = buyJson.toString();
+
+                try {
+                    buyJson.put("stock_symbol", stock_symbol);
+                    buyJson.put("qty", quantity);
+                    buyJson.put("date", "2021-2-17");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                final StringRequest stringRequest = new StringRequest(
+                        Request.Method.POST, URL_BUY, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Toast.makeText(getContext(), "Buying Transaction Successful", Toast.LENGTH_SHORT).show();
+                        FragmentTransaction fr = getFragmentManager().beginTransaction();
+                        fr.replace(R.id.fragment_container, new PortfolioFragment());
+                        fr.commit();
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getContext(), "Buy transaction failed", Toast.LENGTH_LONG).show();
+                    }
+                }
+                ) {
+                    @NonNull
+                    @Override
+                    public Map<String, String> getHeaders() throws AuthFailureError {
+
+                        final Map<String, String> params = new HashMap<>();
+                        params.put("token", getToken());
+                        return params;
+                    }
+
+                    @Override
+                    public String getBodyContentType() {
+                        return "application/json; charset=utf-8";
+                    }
+
+                    @Override
+                    public byte[] getBody() throws AuthFailureError {
+                        try {
+                            return mRequestBody == null ? null : mRequestBody.getBytes("utf-8");
+                        } catch (UnsupportedEncodingException uee) {
+                            VolleyLog.wtf("Unsupported Encoding while trying to get the bytes of %s using %s", mRequestBody, "utf-8");
+                            return null;
+                        }
+                    }
+
+                    @Override
+                    protected Response<String> parseNetworkResponse(NetworkResponse response) {
+                        String responseString = "";
+                        if (response != null) {
+                            responseString = String.valueOf(response.statusCode);
+                        }
+                        return Response.success(responseString, HttpHeaderParser.parseCacheHeaders(response));
+                    }
+                };
+
+//                final JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+//                        Request.Method.POST, URL_BUY, buyJson,
+//                        new Response.Listener<JSONObject>() {
+//                            @Override
+//                            public void onResponse(JSONObject response) {
+//                                Log.d(TAG, "here");
+//                                Toast.makeText(getContext(), "Buying Transaction Successful", Toast.LENGTH_SHORT).show();
+//                                Objects.requireNonNull(getActivity()).getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new PortfolioFragment()).commit();
+//                            }
+//                        },
+//                        new Response.ErrorListener() {
+//                            @Override
+//                            public void onErrorResponse(VolleyError error) {
+//                                Toast.makeText(getContext(), "Buy transaction failed", Toast.LENGTH_LONG).show();
+//                            }
+//                        }
+//                ){
+//                    @NonNull
+//                    @Override
+//                    public Map<String, String> getHeaders() throws AuthFailureError {
+//
+//                        final Map<String, String> params = new HashMap<>();
+//                        params.put("token", getToken());
+//                        return params;
+//                    }
+//                };
+
+                MySingleton.getInstance(getActivity()).addToRequestQueue(stringRequest);
             }
         });
 
