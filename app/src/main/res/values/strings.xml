@@ -24,4 +24,6 @@
     <string name="buy_stock_symbol">Enter Stock Symbol</string>
     <string name="buy_enter_quantity">Enter Quantity</string>
     <string name="buy_buy_btn">Buy</string>
+    <string name="sell_sellBtn">Sell</string>
+    <string name="logoutBtn_user">Logout</string>
 </resources>

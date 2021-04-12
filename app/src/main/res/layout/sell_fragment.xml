@@ -22,7 +22,54 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="3dp"
         android:layout_marginLeft="16dp"
-        android:id="@+id/loginScreenLine"
+        android:id="@+id/sellScreenLine"
         android:background="@color/darkBlue" />
+
+    <AutoCompleteTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sellScreenLine"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginEnd="16dp"
+        android:hint="@string/buy_stock_symbol"
+        android:completionThreshold="1"
+        android:id="@+id/sell_stock_symbol_ac"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:background="@drawable/edit_text_bg"
+        android:padding="12dp"
+        android:textSize="15sp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_below="@+id/sell_stock_symbol_ac"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/edit_text_bg"
+        android:padding="12dp"
+        android:hint="@string/buy_enter_quantity"
+        android:textSize="14sp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:id="@+id/sell_qty" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_below="@+id/sell_qty"
+        android:layout_marginTop="30dp"
+        android:text="@string/sell_sellBtn"
+        android:id="@+id/sellBtn"
+        android:textColor="@color/white"
+        android:textAllCaps="false"
+        android:textSize="16sp" />
 
 </RelativeLayout>

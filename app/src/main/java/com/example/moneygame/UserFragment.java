@@ -1,9 +1,11 @@
 package com.example.moneygame;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,8 +17,14 @@ import java.util.Objects;
 
 public class UserFragment extends Fragment {
 
+    Button logout;
+
     public UserFragment() {
 
+    }
+
+    public void logout() {
+        JWTSharedPref.removeDefaults("jwt_token", getActivity());
     }
 
     @Nullable
@@ -42,6 +50,16 @@ public class UserFragment extends Fragment {
                 userEmail.setText(userInfo.getUser_email());
                 regDate.setText(userInfo.getRegistration_date());
 
+            }
+        });
+
+        logout = (Button) view.findViewById(R.id.user_logoutBtn);
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                logout();
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                startActivity(intent);
             }
         });
 

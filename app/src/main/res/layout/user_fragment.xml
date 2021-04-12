@@ -125,4 +125,17 @@
             android:textSize="20sp" />
     </LinearLayout>
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_below="@+id/lin_layout_user"
+        android:layout_marginTop="30dp"
+        android:text="@string/logoutBtn_user"
+        android:id="@+id/user_logoutBtn"
+        android:textColor="@color/white"
+        android:textAllCaps="false"
+        android:textSize="16sp" />
+
 </RelativeLayout>

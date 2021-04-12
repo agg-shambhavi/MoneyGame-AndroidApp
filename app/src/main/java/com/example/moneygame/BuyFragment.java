@@ -72,10 +72,9 @@ public class BuyFragment extends Fragment {
                 String stock_symbol = stock_symbol_dropdown.getText().toString();
                 int quantity = Integer.parseInt(quantity_et.getText().toString());
 
-                Toast.makeText(getContext(), stock_symbol.toString(), Toast.LENGTH_SHORT).show();
-
                 final JSONObject buyJson = new JSONObject();
-                final String mRequestBody = buyJson.toString();
+//                final String mRequestBody = buyJson.toString();
+//                Log.d(TAG, mRequestBody+ "00000000000000000000000000");
 
                 try {
                     buyJson.put("stock_symbol", stock_symbol);
@@ -89,7 +88,8 @@ public class BuyFragment extends Fragment {
                         Request.Method.POST, URL_BUY, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Toast.makeText(getContext(), "Buying Transaction Successful", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), response, Toast.LENGTH_SHORT).show();
+                        Log.d(TAG, response + "heloooooooooooooooo");
                         FragmentTransaction fr = getFragmentManager().beginTransaction();
                         fr.replace(R.id.fragment_container, new PortfolioFragment());
                         fr.commit();
@@ -110,58 +110,16 @@ public class BuyFragment extends Fragment {
                         return params;
                     }
 
-                    @Override
+                    public byte[] getBody() {
+                        return buyJson.toString().getBytes();
+                    }
+
                     public String getBodyContentType() {
-                        return "application/json; charset=utf-8";
+                        return "application/json";
                     }
 
-                    @Override
-                    public byte[] getBody() throws AuthFailureError {
-                        try {
-                            return mRequestBody == null ? null : mRequestBody.getBytes("utf-8");
-                        } catch (UnsupportedEncodingException uee) {
-                            VolleyLog.wtf("Unsupported Encoding while trying to get the bytes of %s using %s", mRequestBody, "utf-8");
-                            return null;
-                        }
-                    }
 
-                    @Override
-                    protected Response<String> parseNetworkResponse(NetworkResponse response) {
-                        String responseString = "";
-                        if (response != null) {
-                            responseString = String.valueOf(response.statusCode);
-                        }
-                        return Response.success(responseString, HttpHeaderParser.parseCacheHeaders(response));
-                    }
                 };
-
-//                final JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
-//                        Request.Method.POST, URL_BUY, buyJson,
-//                        new Response.Listener<JSONObject>() {
-//                            @Override
-//                            public void onResponse(JSONObject response) {
-//                                Log.d(TAG, "here");
-//                                Toast.makeText(getContext(), "Buying Transaction Successful", Toast.LENGTH_SHORT).show();
-//                                Objects.requireNonNull(getActivity()).getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new PortfolioFragment()).commit();
-//                            }
-//                        },
-//                        new Response.ErrorListener() {
-//                            @Override
-//                            public void onErrorResponse(VolleyError error) {
-//                                Toast.makeText(getContext(), "Buy transaction failed", Toast.LENGTH_LONG).show();
-//                            }
-//                        }
-//                ){
-//                    @NonNull
-//                    @Override
-//                    public Map<String, String> getHeaders() throws AuthFailureError {
-//
-//                        final Map<String, String> params = new HashMap<>();
-//                        params.put("token", getToken());
-//                        return params;
-//                    }
-//                };
-
                 MySingleton.getInstance(getActivity()).addToRequestQueue(stringRequest);
             }
         });
