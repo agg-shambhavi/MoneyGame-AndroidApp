@@ -16,32 +16,57 @@
         android:id="@+id/transaction_fragment_heading" />
 
     <View
-        android:layout_width="30dp"
+        android:layout_width="40dp"
         android:layout_height="5dp"
         android:layout_below="@+id/transaction_fragment_heading"
         android:layout_marginStart="16dp"
         android:layout_marginTop="3dp"
         android:layout_marginLeft="16dp"
         android:id="@+id/buyScreenLine"
-        android:background="@color/darkBlue" />
+        android:background="@drawable/rounded_corner" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/buy_stock_symbol"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="16dp"
+        android:id="@+id/tv_stock_symbol"
+        android:layout_below="@+id/buyScreenLine"/>
 
     <AutoCompleteTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/buyScreenLine"
+        android:layout_below="@+id/tv_stock_symbol"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginEnd="16dp"
-        android:hint="@string/buy_stock_symbol"
         android:completionThreshold="1"
         android:id="@+id/buy_stock_symbol_ac"
         android:textColor="@color/black"
-        android:textColorHint="@color/black"
         android:background="@drawable/edit_text_bg"
         android:padding="12dp"
-        android:textSize="15sp" />
+        android:textSize="16sp"
+        android:elevation="5dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/buy_enter_quantity"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="16dp"
+        android:id="@+id/tv_quantity"
+        android:layout_below="@+id/buy_stock_symbol_ac"/>
 
     <EditText
         android:layout_width="match_parent"
@@ -49,14 +74,12 @@
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_below="@+id/buy_stock_symbol_ac"
+        android:layout_below="@+id/tv_quantity"
         android:layout_marginTop="16dp"
         android:background="@drawable/edit_text_bg"
         android:padding="12dp"
-        android:hint="@string/buy_enter_quantity"
-        android:textSize="14sp"
-        android:textColor="@color/black"
-        android:textColorHint="@color/black"
+        android:elevation="5dp"
+        android:textSize="16sp"
         android:id="@+id/buy_qty" />
 
     <Button
@@ -70,7 +93,9 @@
         android:id="@+id/buyBtn"
         android:textColor="@color/white"
         android:textAllCaps="false"
-        android:textSize="16sp" />
+        android:textSize="20sp"
+        android:background="@drawable/rounded_corner"
+        android:padding="10dp"/>
 
 
 </RelativeLayout>

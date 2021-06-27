@@ -16,18 +16,24 @@
         android:id="@+id/transaction_fragment_heading" />
 
     <View
-        android:layout_width="50dp"
+        android:layout_width="85dp"
         android:layout_height="5dp"
         android:layout_below="@+id/transaction_fragment_heading"
         android:layout_marginStart="16dp"
         android:layout_marginTop="3dp"
         android:layout_marginLeft="16dp"
         android:id="@+id/loginScreenLine"
-        android:background="@color/darkBlue" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
+        android:background="@drawable/rounded_corner" />
+    <com.google.android.material.card.MaterialCardView
         android:layout_height="wrap_content"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:pp="http://schemas.android.com/tools"
+        android:minHeight="150dp"
+        app:contentPadding="15dp"
+        app:cardElevation="5dp"
+        app:cardCornerRadius="20dp"
+        android:id="@+id/card_user"
+        android:layout_width="match_parent"
         android:layout_below="@+id/loginScreenLine"
         android:layout_marginStart="16dp"
         android:layout_marginTop="30dp"
@@ -35,107 +41,118 @@
         android:layout_marginRight="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        android:id="@+id/lin_layout_user"
-        android:orientation="vertical">
+        app:cardBackgroundColor="@color/gray">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:text="@string/tv_first_name_userFragment"
-            android:textSize="20sp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:id="@+id/first_name_user"
-            android:textSize="20sp" />
-
-        <View
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_marginTop="10dp"
-            android:background="@color/gray_line"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:text="@string/tv_last_name_user_fragment"
-            android:layout_marginTop="10dp"
-            android:textSize="20sp" />
+            android:id="@+id/lin_layout_user"
+            android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="@string/tv_first_name_userFragment"
+                android:textSize="20sp" />
 
-            android:layout_marginTop="10dp"
-            android:id="@+id/last_name_user"
-            android:textSize="20sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:id="@+id/first_name_user"
+                android:textSize="20sp" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_marginTop="10dp"
-            android:background="@color/gray_line"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/gray_line"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:text="@string/tv_user_userFragment"
-            android:textSize="20sp"
-            android:layout_marginTop="10dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="@string/tv_last_name_user_fragment"
+                android:layout_marginTop="10dp"
+                android:textSize="20sp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
-            android:layout_marginTop="10dp"
-            android:id="@+id/user_email_user"
-            android:textSize="20sp" />
+                android:layout_marginTop="10dp"
+                android:id="@+id/last_name_user"
+                android:textSize="20sp" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_marginTop="10dp"
-            android:background="@color/gray_line"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/gray_line"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:text="@string/tv_reg_date_user_fragment"
-            android:layout_marginTop="10dp"
-            android:textSize="20sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="@string/tv_user_userFragment"
+                android:textSize="20sp"
+                android:layout_marginTop="10dp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
-            android:layout_marginTop="10dp"
-            android:id="@+id/user_date_user"
-            android:textSize="20sp" />
-    </LinearLayout>
+                android:layout_marginTop="10dp"
+                android:id="@+id/user_email_user"
+                android:textSize="20sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/gray_line"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="@string/tv_reg_date_user_fragment"
+                android:layout_marginTop="10dp"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="10dp"
+                android:id="@+id/user_date_user"
+                android:textSize="20sp" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_below="@+id/lin_layout_user"
+        android:layout_below="@+id/card_user"
         android:layout_marginTop="30dp"
         android:text="@string/logoutBtn_user"
         android:id="@+id/user_logoutBtn"
         android:textColor="@color/white"
         android:textAllCaps="false"
-        android:textSize="16sp" />
+        android:textSize="20sp"
+        android:background="@drawable/rounded_corner"
+        android:padding="10dp"/>
 
 </RelativeLayout>
+

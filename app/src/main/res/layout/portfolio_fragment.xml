@@ -17,14 +17,14 @@
         android:layout_alignParentTop="true" />
 
     <View
-        android:layout_width="90dp"
+        android:layout_width="98dp"
         android:layout_height="5dp"
         android:layout_below="@+id/portfolio_fragment_heading"
         android:layout_marginStart="16dp"
         android:layout_marginTop="3dp"
         android:layout_marginLeft="16dp"
         android:id="@+id/loginScreenLine"
-        android:background="@color/darkBlue" />
+        android:background="@drawable/rounded_corner" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -46,7 +46,8 @@
             android:text="@string/stock_symbol_portfolio"
             android:layout_weight="1"
             android:padding="3dp"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            />
 
         <TextView
             android:layout_width="wrap_content"
@@ -55,7 +56,8 @@
             android:text="@string/quantity_portfolio"
             android:layout_weight="1"
             android:padding="3dp"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            android:gravity="center_horizontal"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -64,7 +66,8 @@
             android:text="@string/current_price_portfolio"
             android:layout_weight="1"
             android:padding="3dp"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            android:layout_gravity="right"/>
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
