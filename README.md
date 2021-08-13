@@ -5,7 +5,7 @@
 Investing in the share market allows you to earn potentially higher returns on your investment. But people fear entering the stock market due to the risk associated with it.😨 Hence, a lot of people do not invest in the stock market at all.
 
 MoneyGame a platform where people can learn to invest in the stock market without the fear of losing their money. They will be able to experiment by buying and selling real stocks but not with real money. Once they have a good understanding of the stock market, they can confidently move to the real stock market. 😄
-## 📷 How does webapp looks like
+## 📷 How does Mobile App looks like
 |  ![Login-Screen](https://user-images.githubusercontent.com/48705124/129293899-be1a6852-509f-4700-b5fe-768a4a4afd10.png) |![Portfolio-Screen](https://user-images.githubusercontent.com/48705124/129293904-2d4ff2a9-47df-41fa-8db7-0f70f16fa0a7.png)   |
 |---|---|
 |  Login Screen | Portfolio Screen  |
