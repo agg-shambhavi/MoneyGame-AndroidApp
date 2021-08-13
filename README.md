@@ -13,3 +13,6 @@ MoneyGame a platform where people can learn to invest in the stock market withou
 | All Transactions Screen  | Buy Screen  |
 |  ![Sell-Screen](https://user-images.githubusercontent.com/48705124/129293908-6845b00a-0ed5-495b-b47c-351d6ce8f20a.png) | ![User-Info](https://user-images.githubusercontent.com/48705124/129293883-98adb3ee-64d7-4b17-aa34-4dd273370577.png)  |
 |  Sell Screen |  User Info Screen |
+
+## 📜 License
+This project is released under a free and open-source software license, Apache License 2.0 or later (LICENSE or https://www.apache.org/licenses/LICENSE-2.0). The documentation is also released under a free documentation license, namely the GFDL v1.3 license or later.
